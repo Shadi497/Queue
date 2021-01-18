@@ -18,11 +18,11 @@ class Queue {
 
   isEmpty = () => this.length === 0;
 
-  peek = () =>
+  /*peek = () =>
     this.isEmpty()
       ? `No time to wait`
       : `${this.length} groups of people in front of u. You have to wait ${this.waitingtime} min`;
-
+*/
   addnode = (groupsize) => {
     const newNode = new Node(groupsize);
     if (this.isEmpty()) this.front = newNode;
@@ -30,6 +30,9 @@ class Queue {
     this.back = newNode;
     this.length++;
     this.waitingtime += groupsize * 0.5;
+    console.log(
+      `${this.length} groups of people in front of u. You have to wait ${this.waitingtime} min`
+    );
   };
   enqueue = (groupsize) => {
     if (this.isFull()) {
@@ -63,13 +66,13 @@ class Queue {
 }
 
 const ride = new Queue(10);
+
 ride.enqueue(2);
-console.log(ride.peek());
 ride.enqueue(8);
 ride.enqueue(16);
 ride.enqueue(20);
 ride.enqueue(6);
-console.log(ride.peek());
+//console.log(ride.peek());
 
 console.log(ride.dequeue()); //6*0.5=3
 console.log(ride.dequeue()); //12*0.5=6
